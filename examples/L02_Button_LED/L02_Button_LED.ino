@@ -1,31 +1,32 @@
-/************************************************* *************************************************
-* Easy Starter Kit Lesson 2: Button and LED
-* You can learn about the Button control method, how to turn on and turn off the LED. 
+/**************************************************************************************************
+* Easy Starter Kit Lesson 2: Button and LED 
 * 
 * This lesson will show you how to use the button and LED.  The button is a blue board with a blue
 * push button on it. The LED is a blue board and has a clear LED on it.
 * 
-* Use a 3 wire connector to connect the LED to the port that has a D^ on its pin labels.
+* Use a 3 wire connector to connect the LED to the port that has a D6 on its pin labels.
 * 
 * Use a 3 wire connector to connect the button to the port that has A2 on its pin labels.
 * 
-*
 * The following functions are available:
 *
-* led.on();             //turn on the led
+* led.on();             //turn on the led.  You can also use a number between 1 and 255 to control the
+*                       //brightness like this led.on(127);
+*
 * led.off();            //turn off the led
+*
 * button.get();         //return HIGH (true) when the button is pressed and LOW (false) when not pressed
-
+*
 *********************************************************************************************************/
 
-#include "EasyStarterKitLED.h"
-#include "EasyStarterKitSwitch.h"
+#include <EasyStarterKitLED.h>      //include the LED library
+#include <EasyStarterKitSwitch.h>   //include the Switch library
 
-#define LED_PIN 6               //LED connect to D6 of Arduino, D6 is pwm pin
-LED led(LED_PIN);               //setup the led as a LED object
+#define LED_PIN 6                   //LED connect to D6 of Arduino, D6 is pwm pin
+LED led(LED_PIN);                   //setup the led as a LED object
 
-#define BUTTON_PIN A2           //SIG pin of button module connect to A2 of IO Shield, that is pin A2 of Arduino 
-Switch button(BUTTON_PIN);      //setup the button as a switch object
+#define BUTTON_PIN A2               //SIG pin of button module connect to A2 of IO Shield, that is pin A2 of Arduino 
+Switch button(BUTTON_PIN);          //setup the button as a switch object
 
 //setup() runs once when the program is first started
 void setup(){

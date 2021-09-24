@@ -22,7 +22,7 @@
   http://www.arduino.cc/en/Tutorial/Blink
 
   Modified by: Andrew Gafford - 10 June 2021
-  Added #include, #define, variables, and userFunction sections
+  Added #include, #define, variables, and user function sections
   for teaching the structure of a program
 */
 

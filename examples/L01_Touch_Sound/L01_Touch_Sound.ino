@@ -22,8 +22,8 @@
 *
 ************************************************** ************************************************** *****/
 
-#include "EasyStarterKitTouchSensor.h"
-#include "EasyStarterKitBuzzer.h"
+#include <EasyStarterKitTouchSensor.h>      //include the Touch Sensor library
+#include <EasyStarterKitBuzzer.h>
 
 #define BUZZER_PIN 6              //the SIG pin of the active Buzzer is connected to D6 of Arduino
 Buzzer buzzer(BUZZER_PIN);        //setup the buzzer object

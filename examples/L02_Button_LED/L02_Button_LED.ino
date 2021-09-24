@@ -22,10 +22,10 @@
 #include "EasyStarterKitSwitch.h"
 
 #define LED_PIN 6               //LED connect to D6 of Arduino, D6 is pwm pin
-LED led(LED_PIN);         
+LED led(LED_PIN);               //setup the led as a LED object
 
 #define BUTTON_PIN A2           //SIG pin of button module connect to A2 of IO Shield, that is pin A2 of Arduino 
-Switch button(BUTTON_PIN);      //
+Switch button(BUTTON_PIN);      //setup the button as a switch object
 
 //setup() runs once when the program is first started
 void setup(){
@@ -33,9 +33,9 @@ void setup(){
   //Arduino requires the setup() function to be in the program
 }
 
-void loop(){
-  if(button.get()) led.on();//if it get high level, turn on the LED
-  else led.off();           //otherwise, turn off the LED
+void loop(){                    // loop repeats over and over
+  if(button.get()) led.on();    //if button.get() returns HIGH level, turn on the LED
+  else led.off();               //otherwise, turn off the LED
 }
 
 /*********************************************************************************************************

@@ -19,8 +19,8 @@
 * temper.getTemperature();                            // returns the temperature value as a float
 * 
 * lcd.init();                                         // I2C 1602 LCD screen initialization
-* lcd.backlight();                                    // turn on the backlight of the screen
-* lcd.noBacklight();                                  // turn off the backlight of the screen
+* lcd.backlight();                                    // turn on the back light of the screen
+* lcd.noBacklight();                                  // turn off the back light of the screen
 * lcd.setCursor(uint8_t col, uint8_t row);            // set the cursor position
 * lcd.print(Sring str);                               // display string on the screen
 * lcd.print(double n, int digits);                    // display a decimal number on the screen
@@ -85,9 +85,9 @@ unsigned char Update;             // Update flag, 1 = re-acquire time and displa
 #define TOUCH_OUT4 12             // the pin that out4-TCH4 area corresponds to, MISO (D12)
 TouchSensor touch(TOUCH_OUT1,TOUCH_OUT2, TOUCH_OUT3,TOUCH_OUT4);    // setup touch object
 
-#define MP3_RX 4                  // RX (recieve) of Serial MP3 module connects to D4 of Arduino
+#define MP3_RX 4                  // RX (receive) of Serial MP3 module connects to D4 of Arduino
 #define MP3_TX 2                  // TX (transmit)connects to D2
-MP3 mp3(MP3_RX, MP3_TX);          // Setup MP3 objet
+MP3 mp3(MP3_RX, MP3_TX);          // Setup MP3 object
 int8_t volume = 0x1e;             // 0~0x1e (30 adjustable level)
 int8_t oldVolume;
 int8_t newVolume;                 // 0~0x1e (30 adjustable level)
@@ -95,14 +95,14 @@ int8_t newVolume;                 // 0~0x1e (30 adjustable level)
 int8_t folderName = 2;            // folder name must be 01 02 03 04 ...
 int8_t fileName = 1;              // prefix of file name must be 001xxx 002xxx 003xxx 004xxx ...099xxx
 #define NUM_OFFSET 2              // offset between number and file name, here the file named 0 is 002 and 1 is 003
-#define TEN_OFFSET 20             // only for whole numbers divisble by ten,  
+#define TEN_OFFSET 20             // only for whole numbers divisible by ten,  
                                   // here the file named 20 is 22, 30 is 23, 40 is 24
 
 void setup() {      // start setup(), setup() runs once when the program starts
   delay(500);       // 500ms wait for the MP3 module to initialize
   clock.begin();    // Start the clock
   lcd.init();	      // initialize the lcd 
-  lcd.backlight();  // turn on the backlight of LCD
+  lcd.backlight();  // turn on the back light of LCD
 
   Timer1.initialize(500000);            // timing for 500ms
   Timer1.attachInterrupt(TimingISR);    // declare the interrupt routine:TimingISR 
@@ -117,10 +117,10 @@ void loop() {
   if(button != -1){                 // if something was touched
     delay(10);                      // delay for 10ms
     buzzer.on();                    // sound the buzzer
-    if(button == TOUCH_OUT1){       // if touched area correspondes to TCH1 area
+    if(button == TOUCH_OUT1){       // if touched area corresponds to TCH1 area
       flag_speak_temp = 1;          // set the flag to read the temperature
     }
-    else if(button == TOUCH_OUT2){  // if touched area correspondes to TCH2 area
+    else if(button == TOUCH_OUT2){  // if touched area corresponds to TCH2 area
       flag_speak_time = 1;          // set the flag to read the time
     }
   	delay(50);                      // delay for 50ms
@@ -154,7 +154,7 @@ void updateVolume(){
   newVolume = map(angle, 0, FULL_ANGLE, 0, 30);   // chooses volume based on that measurement
   if(newVolume != oldVolume){                     // if volumes aren't the same
   	mp3.setVolume(newVolume);                     // set volume to the new value
-  	oldVolume = newVolume;                        // update the oldVolume so curret volume is used in next comparison
+  	oldVolume = newVolume;                        // update the oldVolume so current volume is used in next comparison
   	delay(50);                                    // wait for 50ms for these changes to apply
   }
 }
@@ -248,7 +248,7 @@ void displayTemperature(float temp){
   if((temp < 100)&&(temp>=10))lcd.print(" ");   // if the temp is two digits, print a space for hundredths place
   else if(temp < 10)lcd.print("  ");            // if the temp is one digit, print two spaces
   lcd.print(temp,1);                            // print the temperature
-  lcd.print(" 'C");                             // add the celcius symbol to the screen
+  lcd.print(" 'C");                             // add the Celsius symbol to the screen
 } 
 
 /********** Timer1 Interrupt Routine **********/

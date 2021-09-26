@@ -2,10 +2,11 @@
 * Easy Starter Kit Lesson 4: Rocker Switch
 * In this lesson you will see how to use the rocker switch. It is very similar to the button you
 * used in lesson 02.  The only difference is the physical difference between a switch and a button.
+* The rocker switch is a blue board with a black switch on it.
 * 
 * Use a 3 wire connector to connect the LED to the port that has a D6 on its pin labels.
 * 
-* Use a 3 wire connector to connect the button to the port that has A2 on its pin labels.
+* Use a 3 wire connector to connect the rocker switch to the port that has A2 on its pin labels.
 * 
 * The following functions are available:
 *

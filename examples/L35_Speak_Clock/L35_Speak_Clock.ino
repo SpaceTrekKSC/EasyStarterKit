@@ -122,14 +122,12 @@ void loop()
   if(Update == ON)//Update the display time, is to flash the clock porint
   {
     TimeUpdate();
-	celsius = temper.getTemperature();//get temperature
-    displayTemperature(celsius);//
     Update == OFF;
   }
   if(flag_speak)
   {
     SpeakTime(Time);
-	flag_speak = 0;
+	  flag_speak = 0;
   }
 }
 
@@ -219,4 +217,3 @@ void TimeUpdate(void)
 /*********************************************************************************************************
 The end of file
 *********************************************************************************************************/
-

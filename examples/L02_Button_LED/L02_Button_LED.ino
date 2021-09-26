@@ -10,12 +10,16 @@
 * 
 * The following functions are available:
 *
-* led.on();             //turn on the led.  You can also use a number between 1 and 255 to control the
-*                       //brightness like this led.on(127);
+* led.on();         //turn on the led.  You can also use a number between 1 and 255 to control the
+*                   //brightness like this led.on(127);
 *
-* led.off();            //turn off the led
+* led.off();        //turn off the led
 *
-* button.get();         //return HIGH (true) when the button is pressed and LOW (false) when not pressed
+* led.breathe();    //sets the led to have a breathing effect.  You can change the speed of the
+*                   //breathing by passing and integer number like this led.breath(3).
+*                   //the maximum speed is 30
+*
+* button.get();     //return HIGH (true) when the button is pressed and LOW (false) when not pressed
 *
 *********************************************************************************************************/
 
@@ -34,10 +38,15 @@ void setup(){
   //Arduino requires the setup() function to be in the program
 }
 
-void loop(){                    // loop repeats over and over
+void loop(){                    //loop repeats over and over
   if(button.get()) led.on();    //if button.get() returns HIGH level, turn on the LED
   else led.off();               //otherwise, turn off the LED
 }
+
+/*
+* Note: If you use the led.breath() function here it will complete one full breath cycle, so there will
+* be a delay before it turns off when you release the button
+*/
 
 /*********************************************************************************************************
 The end of file

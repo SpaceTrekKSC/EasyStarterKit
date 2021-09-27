@@ -12,7 +12,7 @@
 * 
 * rgb.begin();                                                          //this initializes the RGB LED library.
 * rgb.setPixelColor(uint8_t r, uint8_t g, uint8_t b, uint16_t n=0);     //r, g, b should be 0~255, n is the position of the RGB led but can be omitted for a single LEG.
-* rgb.show();                                                           //after you have set the color of all the RGB leds, you should run this to display.
+* rgb.show();                                                           //after you have set the color of all the RGB LEDs, you should run this to display.
 * slider.getPosition();                                                 //this will return the position of the slider, the value will be 0~100.
 
 ***************************************************************************************************/

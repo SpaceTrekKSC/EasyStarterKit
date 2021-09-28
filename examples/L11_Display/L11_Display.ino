@@ -1,8 +1,9 @@
 /*********************************************************************************************************
 * Easy Starter Kit Lesson 11: Display number
-* In this lesson you will learn how to use the 4 digit 7 segment display. 
+* In this lesson you will learn how to use the 4 digit 7 segment display. the 4 digit display is on a 
+* blue board and has a 4 digit 7 segment display on it.
 * 
-* Use a 4 wire connector to connect the display to the yellow port that has a D$ and D2 in its pin label
+* Use a 4 wire connector to connect the display to the yellow port that has a D4 and D2 in its pin label
 *
 * The following functions are available:
 *
@@ -23,7 +24,7 @@
 *
 **********************************************************************************************************/
 
-#include <EasyStarterKitTM1637.h>
+#include <EasyStarterKitTM1637.h>     //include the TM1637 display library
 
 #define DIO 2                         //DIO of the TM1637 IC connect to D2 of Arduino
 #define CLK 4                         //CLK of the TM1637 IC connect to D4 of Arduino

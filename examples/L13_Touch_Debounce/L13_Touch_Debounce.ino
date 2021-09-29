@@ -37,7 +37,7 @@ void setup(){               //setup() runs once when the program is first starte
   disp.display(count);      //display counter number
 }
 
-void loop(){
+void loop(){                              //loop() runs over and over
   int button;                             //local variable button                       
   button = touch.get();                   //get button touched and store in button
   if(button == TOUCH_OUT1){               //if touch the TCH1 area

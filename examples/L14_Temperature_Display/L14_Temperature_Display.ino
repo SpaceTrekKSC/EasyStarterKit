@@ -40,7 +40,7 @@ void setup(){                           //setup() runs once when the program is 
 }
 
 void loop(){                            //loop() runs over and over
-  float celsius;                        //declare a variable names Celsius of type float
+  float celsius;                        //declare a variable named Celsius of type float
   celsius = temper.getTemperature();    //getTemperature() returns a floating point value into the variable Celsius
   displayTemperature((int8_t)celsius);  //calls the user defined function displayTemperature() passing Celsius cast as an 8 bit integer
   delay(1000);                          //delay 1000ms

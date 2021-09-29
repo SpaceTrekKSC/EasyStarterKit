@@ -28,7 +28,7 @@ void setup()
   lcd.setCursor(0, 0);
   lcd.print("Hello, world!");
   lcd.setCursor(0, 1);
-  lcd.print("OPEN-SMART");
+  lcd.print("MakerBox");
 }
 
 void loop()

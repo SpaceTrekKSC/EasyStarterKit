@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------
   Arduino library to control a wide variety of WS2811- and WS2812-based RGB
   LED devices such as Adafruit FLORA RGB Smart Pixels and NeoPixel strips.
-  Currently handles 400 and 800 KHz bitstreams on 8, 12 and 16 MHz ATmega
+  Currently handles 400 and 800 KHz bit streams on 8, 12 and 16 MHz ATmega
   MCUs, with LEDs wired for RGB or GRB color order.  8 MHz MCUs provide
   output on PORTB and PORTD, while 16 MHz chips can handle most output pins
   (possible exception with upper PORT registers on the Arduino Mega).

@@ -15,7 +15,7 @@
 #define CMD_FORWARD 0X0A // >>
 #define CMD_REWIND  0X0B // <<
 #define CMD_STOP 0X0E
-#define CMD_STOP_INJECT 0X0F//stop interruptting with a song, just stop the interlude
+#define CMD_STOP_INJECT 0X0F//stop interrupting with a song, just stop the interlude
 
 #define CMD_CHECK_STATUS 0X10
   #define STATUS_STOP    0

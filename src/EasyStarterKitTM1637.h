@@ -4,7 +4,6 @@
 	//	Applicable Module:
 	//		  4-Digit Display by catalex
 	//		  4-Digit Display (D4056A) by catalex
-	//   Store: http://www.aliexpress.com/store/1199788
 	//
 	//	This library is free software; you can redistribute it and/or
 	//	modify it under the terms of the GNU Lesser General Public

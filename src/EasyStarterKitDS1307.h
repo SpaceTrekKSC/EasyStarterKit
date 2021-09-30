@@ -5,7 +5,6 @@
 //	Author:	 Fred.Chu		
 //	Date: 	 April 19,2013
 //	Version: v1.0
-//	by https://open-smart.aliexpress.com/store/1199788
 //
 //  This library is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU Lesser General Public

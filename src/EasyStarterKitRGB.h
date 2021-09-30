@@ -32,13 +32,13 @@
 #define NEO_BRG     0x04
   
 #define NEO_COLMASK 0x01
-#define NEO_KHZ800  0x02 // 800 KHz datastream
+#define NEO_KHZ800  0x02 // 800 KHz data stream
 #define NEO_SPDMASK 0x02
 // Trinket flash space is tight, v1 NeoPixels aren't handled by default.
 // Remove the ifndef/endif to add support -- but code will be bigger.
 // Conversely, can comment out the #defines to save space on other MCUs.
 #ifndef __AVR_ATtiny85__
-#define NEO_KHZ400  0x00 // 400 KHz datastream
+#define NEO_KHZ400  0x00 // 400 KHz data stream
 #endif
 
 class RGB {
@@ -89,7 +89,7 @@ class RGB {
   const volatile uint8_t
     *port;         // Output PORT register
   uint8_t
-    pinMask;       // Output PORT bitmask
+    pinMask;       // Output PORT bit mask
 #endif
 
 };

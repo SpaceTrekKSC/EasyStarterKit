@@ -3,7 +3,6 @@
  *
  * With ideas from:
  *   Created by ITead studio. Alex, Apr 20, 2010.
- *   https://open-smart.aliexpress.com/store/1199788
  *
  * SVN Keywords
  * ----------------------------------

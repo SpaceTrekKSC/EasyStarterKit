@@ -16,13 +16,14 @@
 * disp.display(int8_t DispData []);       // display the numbers in the array
 *                                         // For example, if the array is {1,2,3,4}, then display will read 1234
 * disp.set(uint8_t brightness);           // set the brightness in range 0 ~ 7, 7 being the brightest                                        
-*                                         // the next time display is changed, the brithness will change
+*                                         // the next time display is changed, the brightness will change
 * disp.point(0);                          // Turn off the display colon and the next display takes effect
 * disp.point(1);                          // Turn on the display colon and the next display takes effect
 *********************************************************************************************************/
 
-#include "EasyStarterKitTM1637.h"   // include the display library
-#include "EasyStarterKitKnob.h"     // include the rotary knob library
+#include <EasyStarterKitTM1637.h>   // include the display library
+#include <EasyStarterKitKnob.h>     // include the rotary knob library
+
 #define KNOB_PIN A1                 // SIG pin of Rotary Angle Sensor module connects to A1 of IO Shield, that is pin A1 of Arduino
 Knob knob(KNOB_PIN);                // setup the knob object
 

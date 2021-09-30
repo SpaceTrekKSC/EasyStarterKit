@@ -14,7 +14,7 @@
 * lcd.backlight();                              //turn on the back light
 * lcd.noBacklight();                            //turn off the back light
 * lcd.setCursor(uint8_t col, uint8_t row);      //set the cursor position,col is column
-*                                               //column and row are 0 indexed so the first position is 0, the second is 1, ect.
+*                                               //column and row are 0 indexed so the first position is 0, the second is 1, etc.
 * lcd.print(String str);                        //display a string. Strings that have enough characters to go past the end of the
 *                                               //may exhibit odd behavior due buffer having more columns and/or rows than the display
 * 

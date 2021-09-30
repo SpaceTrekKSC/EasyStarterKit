@@ -15,8 +15,9 @@
 * disp.display(int Decimal);          // display an integer in the range: -999 ~ 9999
 *********************************************************************************************************/
 
-#include "EasyStarterKitTM1637.h"     // include the display library
-#include "EasyStarterKitKnob.h"       // include the temperature library
+#include <EasyStarterKitTM1637.h>     // include the display library
+#include <EasyStarterKitKnob.h>       // include the knob library
+
 #define KNOB_PIN A1                   // SIG pin of Rotary Angle Sensor module connect to A1 of IO Shield, that is pin A1 of Arduino
 Knob knob(KNOB_PIN);                  // setup the rotary knob object
 

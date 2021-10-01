@@ -36,8 +36,8 @@
 * 
 ****************************************************************************************************/
 
-#include <Wire.h> 
-#include <EasyStarterKit_LCD1602.h>
+#include <Wire.h>                   //include the I2C library
+#include <EasyStarterKit_LCD1602.h> //include LCD library
 
 LiquidCrystal_I2C lcd(0x20);        // set the LCD address to 0x20 for the 16 chars and 2 line display (default setting)
 							                      // if 0x20 does not work, please modify it to be 0x38

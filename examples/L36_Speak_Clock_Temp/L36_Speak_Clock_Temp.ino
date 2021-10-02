@@ -6,6 +6,16 @@
 * buzzer for added responsiveness, the touch sensor for controls, the rotary knob to adjust volume, and the
 * LCD screen to display data.
 * 
+* Board Configuration:
+*       Ensure the SD card is inserted in the back of the MP3 player
+*       Connect the speaker to the white connector on the MP3 player
+*       Connect the MP3 player to the yellow connector on the Arduino labeled D4 and D2
+*       Connect the RTC Clock to one of the yellow I2C ports
+*       Connect the LCD Screen to the other free yellow I2C port
+*       Connect your touch sensor the red SPI port
+*       Connect your NTC sensor to its adapter
+*       Connect the adapter to the blue connector on the Arduino labeled A1
+* 
 * Before we get started add the sound recordings from the google drive to your SD card.
 * https://drive.google.com/drive/folders/1yWyeuK4em8zeGK2CnpOeYN-mcKpOM52l?usp=sharing
 * 
@@ -162,7 +172,7 @@ void updateVolume(){
 // This function speaks the current time
 void SpeakTime(int8_t time[]){
   uint8_t addr[10] = {0};                                 // we use this array to construct the sentences
-  uint8_t next = 0;
+  uint8_t next = 0;                                       // counter to keep track of next index
   addr[next++] = 31;                                      // 031 plays a bell before speaking
   addr[next++] = 32;                                      // 032 says "the time is"
   if(Time[0] < 2){                                        // if the hour is less than 20

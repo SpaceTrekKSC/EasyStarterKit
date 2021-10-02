@@ -12,7 +12,7 @@
 *       Connect the MP3 player to the yellow connector on the Arduino labeled D4 and D2
 *       Connect the RTC Clock to one of the yellow I2C ports
 *       Connect the LCD Screen to the other free yellow I2C port
-*       Connect your touch sensor the red SPI port
+*       Connect your touch sensor to the red SPI port
 *       Connect your NTC sensor to its adapter
 *       Connect the adapter to the blue connector on the Arduino labeled A1
 * 
@@ -195,7 +195,7 @@ void SpeakTime(int8_t time[]){
   SpeakGroup(addr, next);                                   // send the array we constructed to the function to read it
 }
 
-// This function reads the current temperature
+// This function reads the current temperature aloud
 void SpeakTemp(float temp){
   if(temp >= 1000)return;                 // we only have audio files to support up to 999
   else if(temp <= -1000)return;           // however, if the reading was this temperature this is surely an issue

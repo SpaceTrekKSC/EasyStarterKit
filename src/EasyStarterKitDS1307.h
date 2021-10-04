@@ -29,13 +29,14 @@
 
 #define DS1307_I2C_ADDRESS 0x68
 
-#define MON 1
-#define TUE 2
-#define WED 3
-#define THU 4
-#define FRI 5
-#define SAT 6
-#define SUN 7
+#define SUN 1
+#define MON 2
+#define TUE 3
+#define WED 4
+#define THU 5
+#define FRI 6
+#define SAT 7
+
 
 class DS1307
 {

@@ -29,63 +29,74 @@
 * disp.point(0);                                      //Turn off the display colon the next time display takes effect
 * disp.point(1);                                      //Turn on the display colon the next time display takes effect
 *
-* clock.begin();                                                      // The clock is on and the function must be called first
-* clock.startClock(void);                                             // clock start, if you stop the clock need to call this function
-* clock.stopClock(void);                                              // clock stop timing
-* clock.getTime(void);                                                // read the clock and time, will be saved in the clock class variable
-* clock.fillByHMS(uint8_t _hour, uint8_t _minute, uint8_t _second);   // write minutes
-* clock.fillByYMD(uint16_t _year, uint8_t _month, uint8_t _day);      // write clock
-* clock.fillDayOfWeek(uint8_t _dow);                                  // write week
-* clock.setTime(void);                                                // write the clock and time that have been written to the clock chip
+* clock.begin();                                      //The clock is on and the function must be called first
+* clock.adjust(DateTime());                           //adjusts the date and time on the RTC chip
+* now = clock.now();                                  //sets the now object to the current date and time from the RTC
+* 
+* now.hour()                                          //access the hour from the now object in 24 hour format
+* now.twelveHour()                                    //access the hour from the now object in 12 hour format
+* now.minute()                                        //access the minute from the now object
+* now.second()                                        //access the second from the now object
+* now.year()                                          //access the year from the now object
+* now.month()                                         //access the month from the now object
+* now.day()                                           //access the day from the now object
 *
 *********************************************************************************************************/
 
-#include <TimerOne.h>                           //include timer one library
-#include <Wire.h>                               //include I2C library
-#include <EasyStarterKitTM1637.h>               //include 4 digit display library
-#include <EasyStarterKitDS1307.h>               //include Real Time Clock library
+#include <TimerOne.h>                       //include timer one library
+#include <Wire.h>                           //include I2C library
+#include <RTClib.h>                         //include the Real Time Clock library
+#include <EasyStarterKitTM1637.h>           //include 4 digit display library
 
-DS1307 clock;                                   //setup DS1307 Real TIme Clock (RTC) object
+RTC_DS1307 clock;                           //setup a RTC-DS1307 object named clock
+DateTime now;                               //setup am object variable called now of user defined type DateTime which is defined in the RTClib library
 
-#define CLK 4                                   //CLK of the TM1637 IC connect to D4 of Arduino
-#define DIO 2                                   //DIO of the TM1637 IC connect to D2 of Arduino
-TM1637 disp(CLK,DIO);                           //setup 4 digit display object
+#define CLK 4                               //CLK of the TM1637 IC connect to D4 of Arduino
+#define DIO 2                               //DIO of the TM1637 IC connect to D2 of Arduino
+TM1637 disp(CLK,DIO);                       //setup 4 digit display object
 
-#define ON 1                                    //define ON as 1 (true)
-#define OFF 0                                   //define OFF as 0 (false)
+#define ON 1                                //define ON as 1 (true)
+#define OFF 0                               //define OFF as 0 (false)
 
-int8_t TimeDisp[] = {0x00,0x00,0x00,0x00};      //an array for displaying to the 4 digit display
-unsigned char ClockPoint = 1;                   //a variable for to display the colon or not
-unsigned char Update;                           //a variable for to update the display or not
+int8_t TimeDisp[] = {0x00,0x00,0x00,0x00};  //an array for displaying to the 4 digit display
+volatile uint8_t ClockPoint = 1;            //a variable for to display the colon or not
+volatile uint8_t Update;                    //a variable for to update the display or not
 
-void setup(){                                   //setup runs once when the program is first started
-  disp.init();                                  //initialize the display
-  clock.begin();                                //initialize the RTC
-  Timer1.initialize(500000);                    //timing for 500ms
-  Timer1.attachInterrupt(TimingISR);            //declare the interrupt serve routine:TimingISR  
+void setup(){                               //setup runs once when the program is first started
+  disp.init();                              //initialize the display
+  clock.begin();                            //initialize the RTC
+
+  clock.adjust(DateTime(F(__DATE__), F(__TIME__)));   //update the RTC to the date and time of when the program was compiled
+  //clock.adjust(DateTime(2021, 10, 6, 13, 14, 38));  //Or use this line to set the RTC with an explicit date & time.
+                                                      //For example, to set the RTC to October 6, 2021 at 1:14:38pm
+  
+  Timer1.initialize(500000);                //timing for 500ms
+  Timer1.attachInterrupt(TimingISR);        //declare the interrupt serve routine:TimingISR  
 }
 
-void loop(){                                    //loop runs over and over 
-  if(Update == ON){                             //if it is time to update the display
-    TimeUpdate();                               //update the time in the display array TimeDisp
-    disp.display(TimeDisp);                     //display the display array TimeDisp
+void loop(){                                //loop runs over and over 
+  if(Update == ON){                         //if it is time to update the display
+    TimeUpdate();                           //update the time in the display array TimeDisp
+    disp.display(TimeDisp);                 //display the display array TimeDisp
   }
 }
 
-void TimingISR(){                               //the function attached to the timer interrupt
-  Update = ON;                                  //turn Update on
-  ClockPoint = !ClockPoint;                     //cycle the colon on the display
+void TimingISR(){                           //the function attached to the timer interrupt
+  Update = ON;                              //turn Update on
+  ClockPoint = !ClockPoint;                 //cycle the colon on the display
 }
 
-void TimeUpdate(void){                          //user defined function to update the display array TimeDisp
-  if(ClockPoint)disp.point(POINT_ON);           //if ClockPoint is 1 show the colon
-  else disp.point(POINT_OFF);                   //if ClockPoint is 0 turn off the colon
-  clock.getTime();                              //update the time from the RTC
-  TimeDisp[0] = clock.hour / 10;                //get the tens digit from the hour
-  TimeDisp[1] = clock.hour % 10;                //get the ones digit from the hour
-  TimeDisp[2] = clock.minute / 10;              //get the tens digit from the minute
-  TimeDisp[3] = clock.minute % 10;              //get the ones digit from the minute
-  Update = OFF;                                 //don't update again until the timer sets update to ON
+void TimeUpdate(void){                      //user defined function to update the display array TimeDisp
+  if(ClockPoint)disp.point(POINT_ON);       //if ClockPoint is 1 show the colon
+  else disp.point(POINT_OFF);               //if ClockPoint is 0 turn off the colon
+  now = clock.now();                        //get the time and date from the RTC and store it in the variable now
+//  TimeDisp[0] = now.hour() / 10;            //get the tens digit from the hour in 24 hour format
+//  TimeDisp[1] = now.hour() % 10;            //get the ones digit from the hour in 24 hour format
+  TimeDisp[0] = now.twelveHour() / 10;      //get the tens digit from the hour in 12 hour format
+  TimeDisp[1] = now.twelveHour() % 10;      //get the ones digit from the hour in 12 hour format
+  TimeDisp[2] = now.minute() / 10;          //get the tens digit from the minute
+  TimeDisp[3] = now.minute() % 10;          //get the ones digit from the minute
+  Update = OFF;                             //don't update again until the timer sets update to ON
 }
 
 /*********************************************************************************************************

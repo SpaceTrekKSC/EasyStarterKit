@@ -32,7 +32,7 @@
 * lcd.backlight();                                      // turn on the back light of the screen
 * lcd.noBacklight();                                    // turn off the back light of the screen
 * lcd.setCursor(uint8_t col, uint8_t row);              // set the cursor position
-* lcd.print(Sring str);                                 // display string on the screen
+* lcd.print(String str);                                // display string on the screen
 * lcd.print(double n, int digits);                      // display a decimal number on the screen
 * 
 * knob.getAngle();                                      // returns the degrees the knob is turned (0-280)

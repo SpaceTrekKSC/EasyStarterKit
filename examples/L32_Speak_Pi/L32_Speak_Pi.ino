@@ -27,9 +27,9 @@
 * mp3.volumeUp();                                       // increase volume
 * mp3.volumeDown();                                     // decrease volume
 * mp3.forward();                                        // fast forward
-* mp3.rewind();                                         // fast rewind
-* mp3.stopPlay();  
-* mp3.stopInject();                                     
+* mp3.rewind();                                         // rewind
+* mp3.stopPlay();                                       // stop playing
+* mp3.stopInject();                                     // stop injecting song
 * mp3.singleCycle();                                    // repeat the same audio on loop
 * mp3.allCycle();                                       // this will play all audio on file in order
 * /-------------------------------------------------/

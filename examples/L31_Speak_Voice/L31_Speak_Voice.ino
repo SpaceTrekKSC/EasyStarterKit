@@ -8,7 +8,7 @@
 *       Ensure the SD card is inserted in the back of the MP3 player
 *       Connect the speaker to the white connector on the MP3 player
 *       Connect the MP3 player to the yellow connector on the Arduino labeled D4 and D2
-*       Connect the 4 Digit Display into one of the yellow I2C ports on the arduino
+*       Connect the 4 Digit Display into one of the yellow I2C ports on the Arduino
 *       Connect the touch sensor to the red SPI connector on the Arduino
 * 
 * Before we get started add the sound recordings from the google drive to your SD card.
@@ -28,9 +28,9 @@
 * mp3.volumeUp();                                       // increase volume
 * mp3.volumeDown();                                     // decrease volume
 * mp3.forward();                                        // fast forward
-* mp3.rewind();                                         // fast rewind
-* mp3.stopPlay();  
-* mp3.stopInject();                                     
+* mp3.rewind();                                         // rewind
+* mp3.stopPlay();                                       // stop playing
+* mp3.stopInject();                                     // stop injecting song
 * mp3.singleCycle();                                    // repeat the same audio on loop
 * mp3.allCycle();                                       // this will play all audio on file in order
 * /-------------------------------------------------/
@@ -55,7 +55,7 @@
 ***********************************************************************************************************/
 #include <EasyStarterKitMP3.h>            // include the MP3 library
 #include <EasyStarterKitTouchSensor.h>    // include the touch sensor library
-#include "EasyStarterKitTM1637.h"         // include the 4 Digit Display library
+#include <EasyStarterKitTM1637.h>         // include the 4 Digit Display library
 
 #define CLK A5                    //CLK of the TM1637 IC connect to A5 of Arduino
 #define DIO A4                    //DIO of the TM1637 IC connect to A4 of Arduino
@@ -98,7 +98,7 @@ void loop(){                      // loop() runs over and over
     else if(button == TOUCH_OUT2){  // if the touched area corresponds to button 2
       if(fileName > minNum){        // if the file index we are displaying is greater than min
         flag_speak = 1;             // set our speak flag to 1 (true)
-        fileName--;                 // lower our filename idex
+        fileName--;                 // lower our filename index
       }
     }
     else if(button == TOUCH_OUT3){  // if the touched area corresponds to button 3

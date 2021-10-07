@@ -2,7 +2,7 @@
 * Easy Starter Kit Lesson 33: Play song with its file name
 * 
 * In this lesson you will learn how to use the ultrasonic distance measurement module to detect objects in 
-* front of you. The sensor will detect anything from 3cm away upto 500cm away. Once the distance is measured
+* front of you. The sensor will detect anything from 3cm away up to 500cm away. Once the distance is measured
 * you will use the MP3 player to read the distance out.
 * 
 * Board Configuration:
@@ -27,7 +27,7 @@
 * lcd.backlight();                                      // turn on the back light of the screen
 * lcd.noBacklight();                                    // turn off the back light of the screen
 * lcd.setCursor(uint8_t col, uint8_t row);              // set the cursor position
-* lcd.print(Sring str);                                 // display string on the screen
+* lcd.print(String str);                                 // display string on the screen
 * lcd.print(double n, int digits);                      // display a decimal number on the screen
 * 
 * mp3.getStatus();                                      // returns the status of MP3 player
@@ -82,50 +82,50 @@ void loop(){                            // loop() runs over and over
 
 // This is the function responsible for compiling audio files to play using SpeakGroup()
 void speakDistance(float distance){
-	if(distance >= 1000)return;                           // we do not have audio to read these values, however
-	else if(distance <= -1000)return;                     // we shouldnt reach them since they are outside the bounds
+  if(distance >= 1000)return;                           // we do not have audio to read these values, however
+  else if(distance <= -1000)return;                     // we shouldn't reach them since they are outside the bounds
 	
-	uint8_t addr[10] = {0};                               // we use this array to construct the sentences
+  uint8_t addr[10] = {0};                               // we use this array to construct the sentences
   uint8_t next = 0;                                     // counter to keep track of next index
-	addr[next++] = 44;                                    // add clip 044, says "The nearest obstacle distance is"
-	if(distance < 0){                                     // if the obstacle is out of range, return
-	  return;
-	}
-	int t = distance;                                     // cast the distance as an int (truncate the decimals)
-	uint8_t flag_hundred;                                 // flag that is true if the number is greater than 100
-  if(t >= 100){                                         // if the number is greater than 100
-  	  flag_hundred = 1;                                 // set our flag to true
-  	  addr[next++] = t / 100 + NUM_OFFSET;              // digit before hundred
-	    addr[next++] = 30;                                // add clip 030, says "hundred"
-	    t %= 100;                                         // modulus by 100, this sets t only to the remainder
+  addr[next++] = 44;                                    // add clip 044, says "The nearest obstacle distance is"
+  if(distance < 0){                                     // if the obstacle is out of range, return
+    return;
   }
-  else flag_hundred = 0;                                // if our number isnt >100 we set the flag to 0
+  int t = distance;                                     // cast the distance as an int (truncate the decimals)
+  uint8_t flag_hundred;                                 // flag that is true if the number is greater than 100
+  if(t >= 100){                                         // if the number is greater than 100
+    flag_hundred = 1;                                   // set our flag to true
+    addr[next++] = t / 100 + NUM_OFFSET;                // digit before hundred
+    addr[next++] = 30;                                  // add clip 030, says "hundred"
+      t %= 100;                                         // modulus by 100, this sets t only to the remainder
+  }
+  else flag_hundred = 0;                                // if our number isn't >100 we set the flag to 0
   if(t != 0){                                           // if our distance is greater than 0
-  	if(flag_hundred)addr[next++] = 38;                  // add clip 038, says "and" only if our number was >100
-  	if(t < 20){                                         // if the number is less than 20
-  	  addr[next++] = t + NUM_OFFSET;                    // add the clip saying that number
-  	}
+    if(flag_hundred)addr[next++] = 38;                  // add clip 038, says "and" only if our number was >100
+    if(t < 20){                                         // if the number is less than 20
+      addr[next++] = t + NUM_OFFSET;                    // add the clip saying that number
+    }
     else{                                               // if the number is greater than 20
-  	  addr[next++] = t / 10 + TEN_OFFSET;               // say the number in the tenths place
-	    t %= 10;                                          // modulus to get the remainder 
-	    if(t != 0)addr[next++] = t + NUM_OFFSET;          // say the remaining number
-  	}
+      addr[next++] = t / 10 + TEN_OFFSET;               // say the number in the tenths place
+      t %= 10;                                          // modulus to get the remainder 
+      if(t != 0)addr[next++] = t + NUM_OFFSET;          // say the remaining number
+    }
   }
   addr[next++] = 1;                                     // add clip 001, says "point"
 	
-	uint8_t subbit;                                       // declare a variable named subbit of type unsigned 8 bit int
-	subbit = ((int)(distance*10))%10;                     // multiply float by 10 then modulus by 10 to get the last digit
-	addr[next++] = subbit + NUM_OFFSET;                   // add this digit to the array, used to say decimal
-	addr[next++] = 45;                                    // finally add clip 045 to say "Centimeters"
+  uint8_t subbit;                                       // declare a variable named subbit of type unsigned 8 bit int
+  subbit = ((int)(distance*10))%10;                     // multiply float by 10 then modulus by 10 to get the last digit
+  addr[next++] = subbit + NUM_OFFSET;                   // add this digit to the array, used to say decimal
+  addr[next++] = 45;                                    // finally add clip 045 to say "Centimeters"
 
-	SpeakGroup(addr, next);                               // send this array and the amount of items (stored in next) to the function to speak it
+  SpeakGroup(addr, next);                               // send this array and the amount of items (stored in next) to the function to speak it
 }
 
 // This function plays out constructed sentences audio files.
 void SpeakGroup(uint8_t addr[], uint8_t size){
-  for(uint8_t i=0; i < size; i ++){                // for each element in the array
-    while(mp3.getStatus()!=STATUS_STOP)delay(50);  // wait 50ms between each clip
-    mp3.playWithFileName(folderName,addr[i]);      // play the audio file from the folder
+  for(uint8_t i=0; i < size; i ++){                     // for each element in the array
+    while(mp3.getStatus()!=STATUS_STOP)delay(50);       // wait 50ms between each clip
+    mp3.playWithFileName(folderName,addr[i]);           // play the audio file from the folder
   }
-  while(mp3.getStatus()!=STATUS_STOP)delay(50);    // wait 50ms after it finishes the sentence
+  while(mp3.getStatus()!=STATUS_STOP)delay(50);         // wait 50ms after it finishes the sentence
 }

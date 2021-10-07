@@ -101,7 +101,7 @@ void loop() {                           // loop repeats over and over
   }
   float celsius;                        // declare variable named celsius of type float
   if(Update == ON){                     // update the display if the interupt timer says to
-	  Update = OFF;                       // reset the Update flag to OFF
+    Update = OFF;                       // reset the Update flag to OFF
     celsius = temper.getTemperature();  // get temperature and store it in celsius
     displayTemperature(celsius);        // display updated temperature
   }

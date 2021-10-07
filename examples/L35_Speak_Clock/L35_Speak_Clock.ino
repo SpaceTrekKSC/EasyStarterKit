@@ -1,4 +1,4 @@
-/***********************************************************************************************************
+ /***********************************************************************************************************
 * Easy Starter Kit Lesson 35: Speak Clock
 * 
 * In this lesson you will learn how to use the MP3 player to read the time aloud. You will
@@ -30,7 +30,7 @@
 * lcd.backlight();                                      // turn on the back light of the screen
 * lcd.noBacklight();                                    // turn off the back light of the screen
 * lcd.setCursor(uint8_t col, uint8_t row);              // set the cursor position
-* lcd.print(Sring str);                                 // display string on the screen
+* lcd.print(String str);                                // display string on the screen
 * lcd.print(double n, int digits);                      // display a decimal number on the screen
 * 
 * /--------------- Basic Operations ---------------/
@@ -41,9 +41,9 @@
 * mp3.volumeUp();                                       // increase volume
 * mp3.volumeDown();                                     // decrease volume
 * mp3.forward();                                        // fast forward
-* mp3.rewind();                                         // fast rewind
-* mp3.stopPlay();  
-* mp3.stopInject();                                     
+* mp3.rewind();                                         // rewind
+* mp3.stopPlay();                                       // stop playing
+* mp3.stopInject();                                     // stop injecting song
 * mp3.singleCycle();                                    // repeat the same audio on loop
 * mp3.allCycle();                                       // this will play all audio on file in order
 * /-------------------------------------------------/
@@ -174,7 +174,7 @@ void TimingISR(){
   halfsecond++;                           // increase our half second counter
   if(halfsecond == 2){                    // if it has been a full second
     Update = ON;                          // set our update flag to ON
-	  halfsecond = 0;                       // reset the half second counter
+    halfsecond = 0;                       // reset the half second counter
   }
 }
 

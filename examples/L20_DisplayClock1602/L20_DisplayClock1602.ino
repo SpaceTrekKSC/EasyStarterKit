@@ -30,7 +30,7 @@
 * now.second()                    //access the second from the now object
 * now.year()                      //access the year from the now object
 * now.month()                     //access the month from the now object
-* now.day()                       //access the day from the now object
+* now.day()                       //access the day of the month from the now object
 * 
 *******************************************************************************************************/
 

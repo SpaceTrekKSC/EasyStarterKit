@@ -1,5 +1,5 @@
 /************************************************* ************************************************** ******
-* OPEN-SMART Easy Starter Kit Lesson 24: Test infrared remote keys 
+* Easy Starter Kit Lesson 24: Test infrared remote keys 
 *
 * Learn how to get keys code of the buttons on the IR remote and display on 1602 LCD.
 *

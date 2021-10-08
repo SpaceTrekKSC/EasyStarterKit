@@ -1,5 +1,5 @@
 /************************************************* ************************************************** ******
-* OPEN-SMART Easy Starter Kit Lesson 25: Infrared remote control and display
+* Easy Starter Kit Lesson 25: Infrared remote control and display
 * You can learn how to recoginze the key on the IR remote control and display the number on the display.
 *
 * The following functions are available:

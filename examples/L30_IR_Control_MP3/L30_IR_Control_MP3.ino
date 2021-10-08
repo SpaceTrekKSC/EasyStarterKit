@@ -1,9 +1,8 @@
 /************************************************* ************************************************** ******
-* OPEN-SMART Easy Starter Kit Lesson 30: IR control MP3
-NOTE!!! First of all you should download the voice resources from our google drive:
-https://drive.google.com/drive/folders/13cnW83AlHeHzdwrgioymGj7KpKZ1wekA?usp=sharing
-
-Then unzip it and find the 01 and 02 folder and put them into your TF card (should not larger than 32GB). 
+* Easy Starter Kit Lesson 30: IR control MP3
+* NOTE!!! First of all you should download the voice resources from our google drive:
+* https://drive.google.com/drive/folders/1yWyeuK4em8zeGK2CnpOeYN-mcKpOM52l?usp=sharing
+* Then unzip it and find the 01 and 02 folder and put them into your TF card (should not larger than 32GB). 
 
 * You can learn how to use the Infrared remote control to control the MP3, and when you press the button, the buzzer beep.
 *

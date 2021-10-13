@@ -33,7 +33,7 @@ LiquidCrystal_I2C lcd(0x20);              //set the LCD address to 0x20 for the 
 IRrecv IR(RECV_PIN);                      //setup the IR receiver object
 
 void setup(){                             //setup() runs once when the program first starts
-  lcd.init();	                            //initialize the LCD
+  lcd.init();                             //initialize the LCD
   lcd.backlight();                        //turn on the backlight
   IR.enableIRIn();                        //Start the receiver
 }

@@ -21,8 +21,8 @@
 * buzzer.on();                      //turn on the buzzer
 * buzzer.off();                     //turn off the buzzer
 *
-* touch.get(); // return is the touch area corresponding Arduino pin number, if not then return -1
-* touch.getLongPress(); // return long press the corresponding Arduino pin number, if not return -1
+* touch.get(); 						// return is the touch area corresponding Arduino pin number, if not then return -1
+* touch.getLongPress(); 			// return long press the corresponding Arduino pin number, if not return -1
 *
 * /--------basic operations---------------/
 * mp3.play();

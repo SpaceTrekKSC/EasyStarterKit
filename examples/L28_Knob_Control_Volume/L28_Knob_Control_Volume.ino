@@ -29,7 +29,7 @@
 * mp3.forward();                                              //fast forward
 * mp3.rewind();                                               //fast rewind
 * mp3.stopPlay();  
-* mp3.stopInject();                                           //when you inject a song, this operation can stop it and come back to the song befor you inject
+* mp3.stopInject();                                           //when you inject a song, this operation can stop it and come back to the song before you inject
 * mp3.singleCycle();                                          //it can be set to cycle play the currently playing song 
 * mp3.allCycle();                                             //to cycle play all the songs in the SD card
 * /--------------------------------/

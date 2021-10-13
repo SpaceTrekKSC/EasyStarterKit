@@ -18,7 +18,7 @@
 * lcd.noBacklight();                            //turn off the backlight
 * lcd.setCursor(uint8_t col, uint8_t row);      //set the cursor position,col is column
 * lcd.print(String str);                         //display string
-* lcd.clear();                                  //clear the sreen
+* lcd.clear();                                  //clear the screen
 
 *********************************************************************************************************/
 

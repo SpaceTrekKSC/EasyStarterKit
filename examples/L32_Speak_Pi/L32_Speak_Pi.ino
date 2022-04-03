@@ -59,7 +59,7 @@
 #define MP3_TX 2                  // TX (transmit)connects to D2
 MP3 mp3(MP3_RX, MP3_TX);          // Setup MP3 object
 
-int8_t volume = 0x1e;             // 0~0x1e (30 adjustable level)
+int8_t volume = 0x17;             // 0x00 to 0x1e (0 to 30 adjustable level) (0x17 is 23)
 int8_t folderName = 2;            // folder name must be 01 02 03 04 ...
 int8_t fileName = 1;              // prefix of file name must be 001xxx 002xxx 003xxx 004xxx ...099xxx
 #define NUM_OFFSET 2              // offset between number and file name, here the file named 0 is 002 and 1 is 003
@@ -68,8 +68,7 @@ const char pi[] = "3.14159265";   // declare a char array named Pi and set its c
 
 //setup() runs once when the program is first started
 void setup(){
-  //this program does not do anything in the setup() function, but
-  //Arduino requires the setup() function to be in the program
+  mp3.setVolume(volume);                //set the volume to 0x17 (23 in decimal)
 }
 
 void loop() {                           // loop() runs over and over

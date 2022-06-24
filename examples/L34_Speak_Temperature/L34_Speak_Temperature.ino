@@ -77,11 +77,12 @@ int8_t volume = 0x1e;             // 0~0x1e (30 adjustable level)
 int8_t folderName = 2;            // folder name must be 01 02 03 04 ...
 int8_t fileName = 1;              // prefix of file name must be 001xxx 002xxx 003xxx 004xxx ...099xxx
 #define NUM_OFFSET 2              // offset between number and file name, here the file named 0 is 002 and 1 is 003
+#define TEN_OFFSET 20             // offset between number and file name, here the file named 10 is 012
 
-void setup() {                // start setup(), setup() runs once when the program starts
-  delay(500);                 // 500ms wait for the MP3 module to initialize
-  lcd.init();                 // initialize the lcd 
-  lcd.backlight();            // turn on the back light of LCD
+void setup() {                          // start setup(), setup() runs once when the program starts
+  delay(500);                           // 500ms wait for the MP3 module to initialize
+  lcd.init();                           // initialize the lcd 
+  lcd.backlight();                      // turn on the back light of LCD
   Timer1.initialize(500000);            // timing for 500ms
   Timer1.attachInterrupt(TimingISR);    // declare the interrupt routine:TimingISR 
   mp3.setVolume(volume);                // set volume based on our above declared variable
@@ -107,7 +108,8 @@ void loop() {                           // loop repeats over and over
   }
   if(flag_speak){                       // if speak temp flag was changed
     SpeakTemp(celsius);                 // speak the current temperature
-    flag_speak_temp = 0;                // set speak temp flag to false
+    flag_speak = 0;                     // set speak temp flag to false
+    
   } 
   delay(100);                           // wait for 100ms
 }

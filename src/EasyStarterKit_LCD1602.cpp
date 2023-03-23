@@ -69,6 +69,7 @@ void LiquidCrystal_I2C::init_priv()
 }
 
 void LiquidCrystal_I2C::begin(uint8_t cols, uint8_t lines, uint8_t dotsize) {
+	cols = cols;					//AG 3-23-2023  - this is a bad way to deal with cols not being used.  But it prevents having to fix all the examples
 	if (lines > 1) {
 		_displayfunction |= LCD_2LINE;
 	}
@@ -313,16 +314,16 @@ void LiquidCrystal_I2C::printstr(const char c[]){
 	print(c);
 }
 
-
+//AG 3-23-2023 - commented all of these out.
 // unsupported API functions
-void LiquidCrystal_I2C::off(){}
-void LiquidCrystal_I2C::on(){}
-void LiquidCrystal_I2C::setDelay (int cmdDelay,int charDelay) {}
-uint8_t LiquidCrystal_I2C::status(){return 0;}
-uint8_t LiquidCrystal_I2C::keypad (){return 0;}
-uint8_t LiquidCrystal_I2C::init_bargraph(uint8_t graphtype){return 0;}
-void LiquidCrystal_I2C::draw_horizontal_graph(uint8_t row, uint8_t column, uint8_t len,  uint8_t pixel_col_end){}
-void LiquidCrystal_I2C::draw_vertical_graph(uint8_t row, uint8_t column, uint8_t len,  uint8_t pixel_row_end){}
-void LiquidCrystal_I2C::setContrast(uint8_t new_val){}
+// void LiquidCrystal_I2C::off(){}
+// void LiquidCrystal_I2C::on(){}
+// void LiquidCrystal_I2C::setDelay (int cmdDelay,int charDelay) {}
+// uint8_t LiquidCrystal_I2C::status(){return 0;}
+// uint8_t LiquidCrystal_I2C::keypad (){return 0;}
+// uint8_t LiquidCrystal_I2C::init_bargraph(uint8_t graphtype){return 0;}
+// void LiquidCrystal_I2C::draw_horizontal_graph(uint8_t row, uint8_t column, uint8_t len,  uint8_t pixel_col_end){}
+// void LiquidCrystal_I2C::draw_vertical_graph(uint8_t row, uint8_t column, uint8_t len,  uint8_t pixel_row_end){}
+// void LiquidCrystal_I2C::setContrast(uint8_t new_val){}
 
 	

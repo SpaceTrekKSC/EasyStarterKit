@@ -71,20 +71,17 @@ class RGB {
 
  private:
 
-  const uint16_t
-    numLEDs,       // Number of RGB LEDs in strip
-    numBytes;      // Size of 'pixels' buffer below
-  uint8_t
-    pin,           // Output pin number
-    brightness,
-   *pixels,        // Holds LED color values (3 bytes each)
-    rOffset,       // Index of red byte within each 3-byte pixel
-    gOffset,       // Index of green byte
-    bOffset;       // Index of blue byte
-  const uint8_t
-    type;          // Pixel flags (400 vs 800 KHz, RGB vs GRB color)
-  uint32_t
-    endTime;       // Latch timing reference
+   const uint16_t numLEDs;       // Number of RGB LEDs in strip
+   const uint16_t numBytes;      // Size of 'pixels' buffer below
+   uint8_t pin;           // Output pin number
+   uint8_t *pixels;        // Holds LED color values (3 bytes each)
+   const uint8_t type;          // Pixel flags (400 vs 800 KHz, RGB vs GRB color)
+   uint8_t brightness;   
+   uint32_t endTime;       // Latch timing reference
+   uint8_t rOffset;        // Index of red byte within each 3-byte pixel
+   uint8_t gOffset;       // Index of green byte
+   uint8_t bOffset;       // Index of blue byte
+   
 #ifdef __AVR__
   const volatile uint8_t
     *port;         // Output PORT register

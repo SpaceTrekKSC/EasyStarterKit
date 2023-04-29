@@ -1,5 +1,5 @@
 /*********************************************************************************************************
-* Easy Starter Kit Lesson 19: Clock input
+* Easy Starter Kit Lesson 21: Clock input
 * 
 * Okay, this one is going to be a bit more complicated.  You will learn how to piece several things we 
 * have learned together to make a clock that you can adjust the date and time on from the touch sensor.

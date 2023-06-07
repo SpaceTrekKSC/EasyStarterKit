@@ -9,8 +9,8 @@
 *
 * You will use what you learned in lesson L02, L08, L09, and L22.
 *
-* Use a 3 wire connector to connect the push button to the blue port that has A2 on its pin labels
-* Use a 3 wire connector to connect the RGB LED to the blue port that has a D3 on its pin label
+* Use a 3 wire connector to connect the push button to the blue port that has D3 on its pin labels
+* Use a 3 wire connector to connect the RGB LED to the blue port that has a D5 on its pin label
 * Use a 3 wire connector to connect the passive buzzer to the blue port with a D6 on its pin label
 * .............(The passive buzzer is the taller one without the sticker)...........................
 * Use a 4 wire connector to connect the ultrasonic sensor to the yellow port with D7 and D8 on its pin label
@@ -40,10 +40,10 @@
 #include <EasyStarterKitUltrasonic.h>           //include the ultrasonic sensor library
 
 //All objects have been setup for you
-#define BUTTON_PIN A2                           //SIG pin of push button connect to A2 of Arduino
+#define BUTTON_PIN 3                           //SIG pin of push button connect to A2 of Arduino
 Switch button(BUTTON_PIN);                      //setup the button as a switch object
 
-#define RGB_PIN     3                           //DIN pin of the module connect to D3 of Arduino
+#define RGB_PIN     5                           //DIN pin of the module connect to D3 of Arduino
 #define NUMpixcels  1                           //number of RGB LED pixels 
 RGB rgb(NUMpixcels, RGB_PIN);                   //setup the RGB object
 

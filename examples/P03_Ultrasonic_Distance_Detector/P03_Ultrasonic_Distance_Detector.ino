@@ -7,7 +7,7 @@
 *
 * You will use what you learned in lesson L09 and L22.
 *
-* Use a 3 wire connector to connect the RGB LED to the blue port that has a D3 on its pin label
+* Use a 3 wire connector to connect the RGB LED to the blue port that has a D5 on its pin label
 * Use a 4 wire connector to connect the ultrasonic sensor to the yellow port with D7 and D8 on its pin label
 *
 *
@@ -26,7 +26,7 @@
 #include <EasyStarterKitUltrasonic.h>           //include the ultrasonic sensor library
 
 //All objects have been setup for you
-#define RGB_PIN     3                           //DIN pin of the module connect to D3 of Arduino
+#define RGB_PIN     5                           //DIN pin of the module connect to D3 of Arduino
 #define NUMpixcels  1                           //number of RGB LED pixels 
 RGB rgb(NUMpixcels, RGB_PIN);                   //setup the RGB object
 

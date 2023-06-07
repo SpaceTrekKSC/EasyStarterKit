@@ -12,8 +12,8 @@
 *
 * You will use what you learned in lesson L02, L09, L20 and L22.
 *
-* Use a 3 wire connector to connect the push button to the blue port that has A2 on its pin labels
-* Use a 3 wire connector to connect the RGB LED to the blue port that has a D3 on its pin label
+* Use a 3 wire connector to connect the push button to the blue port that has D3 on its pin labels
+* Use a 3 wire connector to connect the RGB LED to the blue port that has a D5 on its pin label
 * Use a 4 wire connector to connect the ultrasonic sensor to the yellow port with D7 and D8 on its pin label
 * Use a 4 wire connector to connect the RTC to one of the yellow I2C ports
 * Use a 4 wire connector to connect the LCD to the other yellow I2C port
@@ -61,10 +61,10 @@
 #include <EasyStarterKit_LCD1602.h>             //include the LCD library
 
 //All objects have been setup for you
-#define BUTTON_PIN A2                           //SIG pin of push button connect to A2 of Arduino
+#define BUTTON_PIN 3                           //SIG pin of push button connect to A2 of Arduino
 Switch button(BUTTON_PIN);                      //setup the button as a switch object
 
-#define RGB_PIN     3                           //DIN pin of the module connect to D3 of Arduino
+#define RGB_PIN     5                           //DIN pin of the module connect to D3 of Arduino
 #define NUMpixcels  1                           //number of RGB LED pixels 
 RGB rgb(NUMpixcels, RGB_PIN);                   //setup the RGB object
 
@@ -97,10 +97,7 @@ float distanceCM = 0.0;                         //a variable to store the measur
 void setup() {
   clock.begin();                                //initialize the RTC object called clock
 
-  if(!clock.isrunning()){                             //if the clock is not running (i.e. it was reset by removing the battery)
-    clock.adjust(DateTime(2023, 4, 10, 13, 10, 30));  //use this line to set the RTC with an explicit date & time.
-                                                      //For example, to set the RTC to April 10, 2023 at 1:10:30pm
-  }
+  clock.adjust(DateTime(2023, 4, 10, 13, 10, 30));  //use this line to set the RTC with an explicit date & time. (year, month, day, hour, minute, seconds)
 
   rgb.begin();                                //this initializes the RGB LED object
   rgb.setPixelColor(200, 0, 0);               //start the gate with the RGB LED red

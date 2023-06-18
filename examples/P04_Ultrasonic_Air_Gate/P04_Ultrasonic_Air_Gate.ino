@@ -6,10 +6,6 @@
 * will change from red to blue and the LCD will display the time that the gate was triggered. Use 
 * the push button to reset the air gate and turn the LED red again.
 *
-* Make sure you use L21 to manually set the time on all of the Air Gates used for your drone races.
-* There are no networking features for the MakerBox so multiple devices can't sync their times.
-* You must make sure they are all manually set correctly ahead of time.
-*
 * You will use what you learned in lesson L02, L09, L20 and L22.
 *
 * Use a 3 wire connector to connect the push button to the blue port that has D3 on its pin labels
@@ -93,11 +89,11 @@ bool Triggered = false;                         //a variable to keep track of if
 //global variables
 float distanceCM = 0.0;                         //a variable to store the measured distance in
 
-//setup function runs once at the begining of the program
+//setup function runs once at the beginning of the program
 void setup() {
   clock.begin();                                //initialize the RTC object called clock
 
-  clock.adjust(DateTime(2023, 4, 10, 13, 10, 30));  //use this line to set the RTC with an explicit date & time. (year, month, day, hour, minute, seconds)
+  clock.adjust(DateTime(2023, 4, 10, 8, 10, 30));  //use this line to set the RTC with an explicit date & time. (year, month, day, hour, minute, seconds)
 
   rgb.begin();                                //this initializes the RGB LED object
   rgb.setPixelColor(200, 0, 0);               //start the gate with the RGB LED red
@@ -149,7 +145,7 @@ void triggerGate(){
   lcd.print("Gate Time:");                  //print "Gate Time:" on the first line of the LCD
   lcd.setCursor(0, 1);                      //the first place of the second line
   if(now.hour() < 10)lcd.print(" ");        //print the leading space if needed
-  lcd.print(now.hour(), DEC);               //print the hour in 24 hour format
+  lcd.print(now.twelveHour(), DEC);         //print the hour in 12 hour format
   lcd.print(":");                           //print the colon between hour and minute
   if(now.minute() < 10)lcd.print("0");      //print the leading zero if needed
   lcd.print(now.minute(), DEC);             //print the minute
@@ -177,7 +173,7 @@ void DataUpdate(){                          //a user defined function to update 
   lcd.print("Current Time:");               //print "Current Time:" on the first line of the LCD
   lcd.setCursor(0, 1);                      //the first place of the second line
   if(now.hour() < 10)lcd.print(" ");        //print the leading space if needed
-  lcd.print(now.hour(), DEC);               //print the hour in 24 hour format
+  lcd.print(now.twelveHour(), DEC);         //print the hour in 12 hour format
   lcd.print(":");                           //print the colon between hour and minute
   if(now.minute() < 10)lcd.print("0");      //print the leading zero if needed
   lcd.print(now.minute(), DEC);             //print the minute
